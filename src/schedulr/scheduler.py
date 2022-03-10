@@ -35,7 +35,7 @@ class Scheduler:
         ex = None
         start = datetime.now()
         try:
-            proc = sp.run(cmd, shell=True, check=True, capture_output=True)
+            proc = sp.run(cmd, shell=True, check=True, stdout=sp.PIPE, stderr=sp.PIPE)
             ret = proc.stdout.decode('utf-8')
         except sp.CalledProcessError as e:
             ret = e.stderr.decode('utf-8')
