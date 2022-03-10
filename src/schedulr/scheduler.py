@@ -1,14 +1,14 @@
 import subprocess as sp
-from apscheduler.schedulers.background import BackgroundScheduler
-# from apscheduler.jobstores.sqlalchemy import SQLAlchemyJobStore
-from apscheduler.triggers.interval import IntervalTrigger
-from datetime import datetime
 import queue
 import traceback as tb
-import email_sender
-from report import Report
+import typing
+from datetime import datetime
 
+from apscheduler.schedulers.background import BackgroundScheduler
+from apscheduler.triggers.interval import IntervalTrigger
 from attrs import define
+
+from .report import Report
 
 @define
 class BacklogEntry:
@@ -57,7 +57,7 @@ class Scheduler:
         n = min(n, len(reports))
         return reports[-n:]
 
-    def get_future_jobs(self, n:int) -> list[BacklogEntry]:
+    def get_future_jobs(self, n:int) -> typing.List[BacklogEntry]:
         jobs = self.backend.get_jobs()
         qq = queue.PriorityQueue()
         ret = []

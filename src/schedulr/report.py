@@ -1,6 +1,7 @@
-from attrs import define
 from typing import Optional
 from datetime import datetime
+
+from attrs import define
 
 @define
 class Report:

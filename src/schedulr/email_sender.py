@@ -1,17 +1,14 @@
 
 import smtplib
-
 from email.message import EmailMessage
-from tkinter import getint
-
-from report import Report
-
 from configparser import ConfigParser
-from typing import Optional
+
+from .report import Report
+
 
 class Emailer:
 
-    def __init__(self, config):
+    def __init__(self, config: ConfigParser):
         self._cfg = config
 
     def send(self, rep: Report):

@@ -1,12 +1,9 @@
 
 import cmd
-
-import scheduler
-
 import configparser
 
-import email_sender
-
+from . import scheduler
+from . import email_sender
 
 
 class Cli(cmd.Cmd):
